@@ -1,0 +1,195 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Root WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-27 16:34-0300\n"
+"PO-Revision-Date: 2014-08-27 16:34-0300\n"
+"Last-Translator: Mazetto <teste@teste.com.br>\n"
+"Language-Team:  <root@rootwp.com>\n"
+"Language: en_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_x;_n;__r;_er;_rr\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/core.php:438
+msgid "% items"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/core.php:440
+msgid "No items"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/core.php:442
+msgid "One item"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:89
+msgid "Add new"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:90
+#, php-format
+msgid "Add new %s"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:91
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:115
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:92
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:93
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:94
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:111
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:95
+msgid "Nothing found"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:96
+msgid "Nothing found in trash"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/cpt.php:97
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:112
+msgid "All"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/form.php:218
+msgid "No options to the select field."
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/form.php:234
+msgid "Choose"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/form.php:341
+msgid "Library"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/form.php:382
+msgid "There is already a field with the same name!"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/form.php:394
+msgid "You need to define a name to the field!"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/form.php:570
+msgid "Invalid field..."
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/option.php:75
+msgid "Page options"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/option.php:170
+msgid "Sending unauthorized data..."
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/option.php:173
+msgid "Cheatin&#8217; uh?!"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/option.php:188
+msgid "Successfully updated options!"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/option.php:332
+msgid "Save changes"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:54
+msgid "Image not available"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:261
+msgid "First"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:262
+msgid "Last"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:263
+msgid "Next"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:264
+msgid "Prev"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:271
+#, php-format
+msgid "Page %d of %d:"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:354
+msgid "You are here:"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:355
+msgid "Home Page"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:357
+#, php-format
+msgid "Part %d"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:358
+#, php-format
+msgid "Page %d"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:359
+msgid "Search results"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:360
+msgid "Invalid page"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/theme.php:361
+msgid "Archive"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/metabox.php:32
+msgid "Additional information"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:113
+#, php-format
+msgid "Parent %s"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:114
+#, php-format
+msgid "Parent %s:"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:116
+#, php-format
+msgid "Update %s"
+msgstr ""
+
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:117
+#: /var/www/rootwp/wp-content/themes/rootwp/lib/class/term.php:118
+#, php-format
+msgid "Add %s"
+msgstr ""

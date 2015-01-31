@@ -1,0 +1,32 @@
+<?php
+/*
+ Plugin Name: get remote posts
+ Description: Recupera posts remotos
+ Version: 1.0
+ Author: Ennio
+ Author URI: NULL
+ */
+class KDM_Posts
+{
+    static $prefix = 'grp_';
+    
+    function activation()
+    {
+        add_option(self::$prefix . 'search', 'wordpress', FALSE, 'no' );
+    }
+    
+    function deactivation()
+    {
+        
+    }
+    
+    function init()
+    {
+        
+    }
+}
+
+register_activation_hook(__FILE__, array('KDM_Posts', 'activation'));
+register_deactivation_hook(__FILE__, array('KDM_Posts', 'deactivation'));
+
+add_action('plugin_loaded', array('KDM_Posts', 'init'));
