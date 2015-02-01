@@ -2,6 +2,8 @@
 
 require_once STYLESHEETPATH . '/lib/root.php';
 
+require_once STYLESHEETPATH . '/../../../wp-admin/includes/plugin.php';
+require_once STYLESHEETPATH . '/custom-admin.php';
 
 
 
@@ -19,6 +21,7 @@ function custom_setup() {
     register_nav_menu('menu-header', 'Menu do topo');
     add_action('wp_enqueue_scripts', 'custom_formats');
     add_action('init', 'cptSlide', 0);
+    add_action('init', 'configTheme');
 }
 
 function custom_admin_setup() {
@@ -111,7 +114,15 @@ function cptSlide() {
         'has_archive' => true,
         'rewrite' => array( 'slug' => 'slides' ),
         'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'page-attributes'),
-        
     )
     );
 }
+
+function configTheme(){
+    add_menu_page('Opções do Tema', 'Opções do Tema', 'administrator', 'opt-theme', 'optionTheme');
+}
+
+function optionTheme(){
+    echo 'Opções do tema';
+}
+
