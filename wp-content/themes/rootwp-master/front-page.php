@@ -7,6 +7,14 @@ $slide = new WP_Query(
             'order'         => 'ACS'
         )
         );
+$blog = new WP_Query(
+        array(
+            'post_type'         => 'post',
+            'orderby'           => 'menu_order',
+            'order'             => 'ACS',
+            'posts_per_page'    => 4
+        )
+        );
 
 ?>    
 <?php if($slide->have_posts()) { ?>
@@ -333,48 +341,39 @@ $slide = new WP_Query(
                     </div>
                     <br class="clearfix"/>
                 </div>
-                
+                <?php if($blog->have_posts()) { ?>
                 <div class="blog_box">
                 <?php
-                $i = 1;
-
-                while (have_posts() && $i <= 4){ 
-                    the_post(); 
-                    $title = get_the_title();
-                    $permalink = get_permalink();
-                    $author = get_the_author();    
-                    $date = get_the_date();
+                while ($blog->have_posts()){ 
+                    $blog->the_post(); 
+                    global $post;
                 ?>
-
                 <div class="col-sm-5 col-md-6 blog_post">
                     <ul class="list-inline">
                         <li class="col-md-4">
-                            <?php  
-                            printf(
-                            '<a href="%s" title="%s">%s</a>',   
-                            $permalink,
-                            $title,
-                            get_the_post_thumbnail(NULL, array( 152, 152))
-                            );
-                            ?>
+                            <a href="<?php echo get_permalink(); ?>">
+                            <?php the_post_thumbnail(array('150','150')); ?>
+                            </a>
                         </li>
-                        <li  class="col-md-8">
+                        <li class="col-md-8">
                             <div class="pull-left">
-                                <span class="blog_header"><?php  echo $title; ?></span><br/>
-                                <span>Posted by : <?php the_author_posts_link(); ?> </span>
+                                <span class="blog_header"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></span><br>
+                                <span>Posted by : <span class="txt_orange"><?php echo get_the_author() ?></span></span>
                             </div>
                             <div class="pull-right">
-                                <a class="btn btn-orange" href="<?php echo $permalink; ?>" role="button"><?php echo $date; ?></a>
+                                <a class="btn btn-orange" href="#" role="button"><?php echo get_the_date(); ?></a>
                             </div>
                             <div class="clearfix"> </div>
                             <p class="blog_text">
-                                <?php echo get_the_excerpt(); ?>
+                                <?php echo the_excerpt(); ?>
                             </p>
                         </li>
-                    </ul>
-                </div>          
-                <?php $i++; } ?>           
+                    </ul>	
                 </div>
+        
+                <?php } ?>           
+                </div>
+                <?php } ?>
             </div>
         </div>
 

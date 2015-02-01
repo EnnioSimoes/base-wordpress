@@ -595,6 +595,10 @@ ul.templatemo-project-gallery  li  a img:hover {
 	margin-left: -12px;
 }
 
+span.blog_header a{
+    color: #000;
+}
+
 @media (min-width:991px) and (max-width:1200px) {
     .templatemo-project-box, .project-overlay {
         height:170px;
