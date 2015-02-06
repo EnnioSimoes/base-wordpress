@@ -15,7 +15,14 @@ $blog = new WP_Query(
             'posts_per_page'    => 4
         )
         );
-
+$portfolio = new WP_Query(
+        array(
+            'post_type'         => 'portfolio',
+            'orderby'           => 'menu_order',
+            'order'             => 'ACS',
+            'posts_per_page'    => 4
+        )
+        );
 ?>    
 <?php if($slide->have_posts()) { ?>
         <!-- Slideshow 4 -->
@@ -185,11 +192,29 @@ $blog = new WP_Query(
                     <div class="clearfix"></div>
                     <div class="templatemo-gallery-category" style="font-size:16px; margin-top:80px;">
                         <div class="text-center">
-                            <a class="active" href=".gallery">All</a> / <a href=".gallery-design">Web Design </a>/ <a href=".gallery-graphic">Graphic</a> / <a href=".gallery-inspiration">Inspiration</a> / <a href=".gallery-creative">Creative</a>							
+                            <?php
+                                while ($portfolio->have_posts()){ 
+                                $portfolio->the_post(); 
+                                global $post;
+                                $termos = wp_get_object_terms( $post->ID,  'Categoria' );
+                                $i = 0;
+                                $qtde = sizeof($termos);
+                                //echo $qtde;
+                                foreach ($termos as $termo):
+                                    ?>
+                                        <a href=".gallery-<?=$termo->name; ?>" <?php if($i==0){echo'class="active"';} ?>><?=$termo->name; ?></a>
+                                    <?php
+                                    $i++;
+                                    if($i!=$qtde){echo' / ';}
+                                endforeach;
+                            }
+                            ?>
+                            <!--            
+                            <a class="active" href=".gallery">All</a> / <a href=".gallery-design">Web Design </a>/ <a href=".gallery-graphic">Graphic</a> / <a href=".gallery-inspiration">Inspiration</a> / <a href=".gallery-creative">Creative</a>	
+                            -->
                         </div>
                     </div>
                 </div> <!-- /.row -->
-
 
                 <div class="clearfix"></div>
                 <div class="text-center">

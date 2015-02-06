@@ -21,6 +21,7 @@ function custom_setup() {
     register_nav_menu('menu-header', 'Menu do topo');
     add_action('wp_enqueue_scripts', 'custom_formats');
     add_action('init', 'cptSlide', 0);
+    add_action('init', 'cptPortfolio', 0);
     add_action('init', 'configTheme');
 }
 
@@ -117,6 +118,22 @@ function cptSlide() {
     )
     );
 }
+function cptPortfolio() {
+    CPT::add(
+    'Portfolio',
+    array(
+    'singular' => 'Portfolio',
+    'plural' => 'Portfolios'
+    ),
+    array(
+        'public' => true,
+        'has_archive' => true,
+        'rewrite' => array( 'slug' => 'portfolios' ),
+        'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'page-attributes'),
+    )
+    );
+}
+Term::add( 'Categoria', 'portfolio' );
 
 function configTheme(){
     add_menu_page('Opções do Tema', 'Opções do Tema', 'administrator', 'opt-theme', 'optionTheme');
