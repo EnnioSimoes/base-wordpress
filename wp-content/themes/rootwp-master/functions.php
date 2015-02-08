@@ -23,6 +23,7 @@ function custom_setup() {
     add_action('init', 'cptSlide', 0);
     add_action('init', 'cptPortfolio', 0);
     add_action('init', 'configTheme');
+    add_action('init', 'cptMembers');
 }
 
 function custom_admin_setup() {
@@ -135,6 +136,31 @@ function cptPortfolio() {
 }
 Term::add( 'Categoria', 'portfolio' );
 
+function cptMembers(){
+    CPT::add(
+    'Equipe',
+    array(
+    'singular' => 'Equipe',
+    'plural' => 'Equipe'
+    ),
+    array(
+        'public' => true,
+        'has_archive' => true,
+        'rewrite' => array( 'slug' => 'equipe' ),
+        'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'page-attributes'),
+    )
+    );
+}
+/*
+Metabox::add( 'eq-nome', 'Equipe',
+    array(
+    'title'     => 'Nome do membro:',
+    'context'   => 'nome',
+    'priority'  => 'low',
+    'callback'  => 'custom_metabox'
+    )
+);
+*/
 function configTheme(){
     add_menu_page('Opções do Tema', 'Opções do Tema', 'administrator', 'opt-theme', 'optionTheme');
 }
