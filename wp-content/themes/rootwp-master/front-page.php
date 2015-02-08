@@ -20,7 +20,7 @@ $portfolio = new WP_Query(
             'post_type'         => 'portfolio',
             'orderby'           => 'menu_order',
             'order'             => 'ACS',
-            'posts_per_page'    => 4
+            'posts_per_page'    => 20
         )
         );
 ?>    
@@ -193,21 +193,28 @@ $portfolio = new WP_Query(
                     <div class="templatemo-gallery-category" style="font-size:16px; margin-top:80px;">
                         <div class="text-center">
                             <?php
-                                while ($portfolio->have_posts()){ 
-                                $portfolio->the_post(); 
-                                global $post;
-                                $termos = wp_get_object_terms( $post->ID,  'Categoria' );
-                                $i = 0;
-                                $qtde = sizeof($termos);
-                                //echo $qtde;
-                                foreach ($termos as $termo):
-                                    ?>
-                                        <a href=".gallery-<?=$termo->name; ?>" <?php if($i==0){echo'class="active"';} ?>><?=$termo->name; ?></a>
-                                    <?php
-                                    $i++;
-                                    if($i!=$qtde){echo' / ';}
-                                endforeach;
+                            if($portfolio->have_posts()){
+                                //while ($portfolio->have_posts()) {
+                                    //$portfolio->the_post();
+                                    //global $post;
+                                    $termos =get_terms('Categoria');
+                                    $i = 0;
+                                    $qtde = sizeof($termos);
+                                    //echo $qtde;
+                                    foreach ($termos as $termo):
+                                        ?>
+                                            <a href=".gallery-<?= $termo->name; ?>" <?php if($i == 0){echo'class="active"';}?> > <?= $termo->name;?></a>
+                                        <?php
+                                        $i++;
+                                        if ($i != $qtde) {
+                                            echo' / ';
+                                        }
+                                    endforeach;
+                                //}
                             }
+                            //echo '<br><pre>';
+                            //$termos = get_terms('Categoria');
+                            //print_r($termos);
                             ?>
                             <!--            
                             <a class="active" href=".gallery">All</a> / <a href=".gallery-design">Web Design </a>/ <a href=".gallery-graphic">Graphic</a> / <a href=".gallery-inspiration">Inspiration</a> / <a href=".gallery-creative">Creative</a>	
@@ -219,133 +226,31 @@ $portfolio = new WP_Query(
                 <div class="clearfix"></div>
                 <div class="text-center">
                     <ul class="templatemo-project-gallery" >
-                        <li class="col-lg-2 col-md-2 col-sm-2  gallery gallery-graphic" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-1.jpg" data-group="gallery-graphic">
+                        <?php
+                        while ($portfolio->have_posts()){ 
+                            $portfolio->the_post(); 
+                            global $post;
+                            $imgUrl = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                            $term_list=wp_get_post_terms($post->ID, 'Categoria', array("fields" => "names")); 
+                            //print_r($term_list);
+                        ?>                        
+                        <li class="col-lg-2 col-md-2 col-sm-2  gallery 
+                            <?php foreach ($term_list as $names): ?>
+                            gallery-<?=$names; ?>
+                            <?php endforeach; ?>
+                        ">
+                            <a class="colorbox" href="<?=$imgUrl;?>" data-group="gallery-graphic">
                                 <div class="templatemo-project-box">
-
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-1.jpg" class="img-responsive" alt="gallery" />
-
+                                    <?php the_post_thumbnail(array('200','200'), array('class'=>'img-responsive')) ?>
                                     <div class="project-overlay">
-                                        <h5>Graphic</h5>
+                                        <h5><?php the_title(); ?></h5>
                                         <hr />
-                                        <h4>TEA POT</h4>
+                                        <h4><?php the_excerpt(); ?></h4>
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li class="col-lg-2 col-md-2 col-sm-2  gallery gallery-creative" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-2.jpg" data-group="gallery-creative">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-2.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Creative</h5>
-                                        <hr />
-                                        <h4>BREAKFAST</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="col-lg-2 col-md-2 col-sm-2  gallery gallery-inspiration" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-3.jpg" data-group="gallery-inspiration">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-3.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Inspiration</h5>
-                                        <hr />
-                                        <h4>GREEN COLORS</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="col-lg-2 col-md-2 col-sm-2  gallery gallery-design" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-4.jpg" data-group="gallery-design">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-4.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Web Design</h5>
-                                        <hr />
-                                        <h4>CAMERA</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="col-lg-2 col-md-2 col-sm-2  gallery gallery-inspiration" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-5.jpg" data-group="gallery-inspiration">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-5.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Inspiration</h5>
-                                        <hr />
-                                        <h4>PLANT</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="col-lg-2 col-md-2 col-sm-2  gallery gallery-inspiration" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-6.jpg" data-group="gallery-inspiration">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-6.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Inspiration</h5>
-                                        <hr />
-                                        <h4>CABLE TRAIN</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        
-                        <li class="col-lg-2 col-md-2 col-sm-2 gallery gallery-design" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-7.jpg" data-group="gallery-design">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-7.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Web Design</h5>
-                                        <hr />
-                                        <h4>CITY</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        
-                        <li class="col-lg-2 col-md-2 col-sm-2 gallery gallery-creative" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-8.jpg" data-group="gallery-creative">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-8.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Creative</h5>
-                                        <hr />
-                                        <h4>BIRDS</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        
-                        <li class="col-lg-2 col-md-2 col-sm-2 gallery gallery-graphic" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-9.jpg" data-group="gallery-graphic">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-9.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Graphic</h5>
-                                        <hr />
-                                        <h4>NATURE</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        
-                        <li class="col-lg-2 col-md-2 col-sm-2 gallery gallery-inspiration" >
-                            <a class="colorbox" href="<?php echo PW_THEME_URL;?>images/full-gallery-image-10.jpg" data-group="gallery-inspiration">
-                                <div class="templatemo-project-box">
-                                    <img src="<?php echo PW_THEME_URL;?>images/gallery-image-10.jpg" class="img-responsive" alt="gallery" />
-                                    <div class="project-overlay">
-                                        <h5>Inspiration</h5>
-                                        <hr />
-                                        <h4>DOGGY</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
+                        <?php } ?>
                     </ul><!-- /.gallery -->
                 </div>
                 <div class="clearfix"></div>
