@@ -73,6 +73,46 @@ register_sidebar(array(
     'after_title' => '</h2>',
 ));
 
+register_sidebar(array(
+    'name' => __('Footer 1'),
+    'id' => 'footer1',
+    'description' => __('Caixa 1 do Footer'),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => '</aside>',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+));
+
+register_sidebar(array(
+    'name' => __('Footer 2'),
+    'id' => 'footer2',
+    'description' => __('Caixa 2 do Footer'),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => '</aside>',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+));
+
+register_sidebar(array(
+    'name' => __('Footer 3'),
+    'id' => 'footer3',
+    'description' => __('Caixa 3 do Footer'),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => '</aside>',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+));
+
+register_sidebar(array(
+    'name' => __('Footer 4'),
+    'id' => 'footer4',
+    'description' => __('Caixa 4 do Footer'),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => '</aside>',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+));
+
 function custom_formats() {
     wp_register_style('googlefont', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic', NULL, NULL, 'all');
     wp_register_style('bootstrap', PW_THEME_URL . 'css/bootstrap.css', NULL, NULL, 'all');
